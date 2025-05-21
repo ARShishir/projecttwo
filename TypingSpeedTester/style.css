@@ -1,0 +1,107 @@
+* {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #74ebd5 0%, #acb6e5 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .app-container {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+      max-width: 700px;
+      width: 100%;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .quote-display {
+      background: #f3f4f6;
+      padding: 20px;
+      border-radius: 10px;
+      font-family: monospace;
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      min-height: 100px;
+    }
+
+    .quote-display span.correct {
+      color: green;
+      font-weight: bold;
+    }
+
+    .quote-display span.incorrect {
+      color: red;
+      text-decoration: underline;
+    }
+
+    textarea {
+      width: 100%;
+      padding: 15px;
+      font-size: 1.1rem;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      margin-bottom: 20px;
+      resize: none;
+      font-family: monospace;
+      height: 120px;
+    }
+
+    textarea:disabled {
+      background-color: #eee;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      font-size: 1rem;
+    }
+
+    .stats p {
+      flex: 1;
+    }
+
+    button {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    footer {
+      margin-top: 20px;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    footer a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }

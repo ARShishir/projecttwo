@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Notes App By Shishir</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="container">
+    <h1 class="app-title">Notes App</h1>
+
+    <form id="noteForm" class="note-form" aria-label="Add a new note">
+      <label for="noteInput" class="visually-hidden">Write your note here</label>
+      <textarea
+        id="noteInput"
+        name="note"
+        rows="4"
+        placeholder="Write your note here..."
+        required
+        aria-required="true"
+      ></textarea>
+      <button type="submit" id="addNoteBtn" class="btn">Add Note</button>
+    </form>
+
+    <section id="notesContainer" class="notes" aria-live="polite" aria-label="List of notes"></section>
+  </main>
+
+  <footer>
+    <p>
+      Developed by
+      <a href="https://github.com/ARShishir" target="_blank" rel="noopener noreferrer">
+        <strong>Abdur Rahman Shishir</strong>
+      </a>
+    </p>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

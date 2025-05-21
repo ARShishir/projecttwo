@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Colorful Countdown Timer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<main>
+  <h1>Countdown Timer</h1>
+  <input type="datetime-local" id="datetime-picker" />
+  <button id="start-btn">Start Countdown</button>
+
+  <div class="timer" id="timer" style="display:none;">
+    <div class="time-segment">
+      <div class="number" id="days">00</div>
+      <div class="label">Days</div>
+    </div>
+    <div class="time-segment">
+      <div class="number" id="hours">00</div>
+      <div class="label">Hours</div>
+    </div>
+    <div class="time-segment">
+      <div class="number" id="minutes">00</div>
+      <div class="label">Minutes</div>
+    </div>
+    <div class="time-segment">
+      <div class="number" id="seconds">00</div>
+      <div class="label">Seconds</div>
+    </div>
+  </div>
+
+  <div id="message"></div>
+</main>
+
+<footer>
+  Developed by <a href="https://github.com/ARShishir" target="_blank">Abdur Rahman Shishir</a>
+</footer>
+
+  <script src="script.js" defer></script>
+
+</body>
+</html>

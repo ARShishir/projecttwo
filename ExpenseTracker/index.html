@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Colorful Expense Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+
+</head>
+<body>
+
+<main>
+  <h1>Expense Tracker</h1>
+  <form id="expense-form">
+    <input type="text" id="expense-name" placeholder="Expense Name" required />
+    <input type="number" id="expense-amount" placeholder="Amount (BDT)" min="0.01" step="0.01" required />
+    <button type="submit">Add</button>
+  </form>
+
+  <ul class="expenses-list" id="expenses-list"></ul>
+
+  <div class="total" id="total-expense">Total: BDT 0.00</div>
+</main>
+
+<footer>
+  Developed by <a href="https://github.com/ARShishir" target="_blank">Abdur Rahman Shishir</a>
+</footer>
+
+  <script src="script.js" defer></script>
+
+</body>
+</html>

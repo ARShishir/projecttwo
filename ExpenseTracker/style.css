@@ -1,0 +1,209 @@
+/* Reset */
+  * {
+    box-sizing: border-box;
+  }
+
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #74ebd5 0%, #acb6e5 100%);
+    color: #222;
+  }
+
+  main {
+    flex: 1 0 auto;
+    max-width: 480px;
+    margin: 40px auto 20px;
+    background: #fff;
+    padding: 25px 30px 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 2.8rem;
+    margin-bottom: 30px;
+    color: #333;
+  }
+
+  form {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  input[type="text"],
+  input[type="number"] {
+    flex: 1 1 150px;
+    padding: 12px 16px;
+    font-size: 16px;
+    border-radius: 12px;
+    border: 2px solid #ddd;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  input[type="text"]:focus,
+  input[type="number"]:focus {
+    border-color: #74ebd5;
+  }
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  button {
+    background: linear-gradient(45deg, #ff512f, #dd2476);
+    border: none;
+    padding: 14px 28px;
+    border-radius: 30px;
+    font-size: 18px;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(221,36,118,0.6);
+    transition: background 0.4s ease, box-shadow 0.3s ease;
+  }
+  button:hover {
+    background: linear-gradient(45deg, #dd2476, #ff512f);
+    box-shadow: 0 8px 22px rgba(255,81,47,0.85);
+  }
+
+  .expenses-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 280px;
+    overflow-y: auto;
+    border-top: 2px solid #eee;
+  }
+
+  .expense-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 10px;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 18px;
+    color: #444;
+  }
+
+  .expense-name {
+    flex: 1;
+  }
+
+  .expense-amount {
+    font-weight: 700;
+    color: #dd2476;
+    margin-right: 16px;
+    min-width: 80px;
+    text-align: right;
+  }
+
+ .delete-btn {
+  background: #ff6b6b;
+  border: none;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 3px 8px rgba(255, 107, 107, 0.7);
+  transition: background 0.3s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  line-height: 1;
+  user-select: none;
+}
+
+.delete-btn:hover {
+  background: #ff3b3b;
+  transform: scale(1.15);
+}
+
+  .total {
+    margin-top: 30px;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #333;
+    text-align: center;
+    border-top: 2px solid #eee;
+    padding-top: 20px;
+  }
+
+  footer {
+    flex-shrink: 0;
+    background: #222;
+    text-align: center;
+    padding: 15px 10px;
+    font-size: 14px;
+    color: #eee;
+  }
+  footer a {
+    color: #dd2476;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  footer a:hover {
+    text-decoration: underline;
+  }
+
+  /* Scrollbar for expense list */
+  .expenses-list::-webkit-scrollbar {
+    width: 8px;
+  }
+  .expenses-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+  }
+  .expenses-list::-webkit-scrollbar-thumb {
+    background: #dd2476;
+    border-radius: 10px;
+  }
+
+  @media (max-width: 480px) {
+    main {
+      margin: 20px 15px 20px;
+      padding: 20px 15px 30px;
+    }
+    h1 {
+      font-size: 2.2rem;
+    }
+    form {
+      gap: 12px;
+    }
+    input[type="text"],
+    input[type="number"] {
+      flex: 1 1 100%;
+      font-size: 15px;
+      padding: 10px 12px;
+    }
+    button {
+      width: 100%;
+      font-size: 16px;
+      padding: 12px 0;
+    }
+    .expense-item {
+      font-size: 16px;
+      padding: 12px 8px;
+    }
+    .expense-amount {
+      margin-right: 10px;
+      min-width: 70px;
+    }
+    .total {
+      font-size: 1.6rem;
+      padding-top: 16px;
+    }
+  }

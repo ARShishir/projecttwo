@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Invoice Generator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <button id="themeToggle">🌙 Toggle Theme</button>
+
+  <div class="invoice-container" id="invoice">
+    <header class="invoice-header">
+      <div class="logo-area">
+        <div class="logo">Shishir Company</div>
+      </div>
+      <div class="invoice-info">
+        <p><strong>Invoice No:</strong> <span id="invoiceNo"></span></p>
+        <p><strong>Invoice Date:</strong> <span id="invoiceDate"></span></p>
+      </div>
+    </header>
+
+    <section class="address-section">
+      <div class="column">
+        <h3>Seller</h3>
+        <p><strong>Name:</strong> Shishir Company</p>
+        <p><strong>Address:</strong> Gulshan, Dhaka</p>
+        <p><strong>Mail:</strong> shishircompany@gmail.com</p>
+        <p><strong>Phone:</strong> +880 1560 016 086</p>
+      </div>
+      <div class="column">
+        <h3>Bill To</h3>
+        <input type="text" id="clientName" placeholder="Client Name" />
+        <input type="text" id="clientAddress" placeholder="Client Address" />
+        <input type="email" id="clientEmail" placeholder="Client Email" />
+        <input type="tel" id="clientPhone" placeholder="Client Phone" />
+      </div>
+    </section>
+
+    <section class="items-section">
+      <div class="item-inputs">
+        <input type="text" id="itemDesc" placeholder="Description" />
+        <input type="text" id="itemQty" placeholder="Quantity" />
+        <input type="number" id="itemPrice" placeholder="Unit Price" />
+        <button onclick="addItem()">➕ Add Item</button>
+      </div>
+
+      <table>
+        <thead>
+          <tr><th>#</th><th>Description</th><th>Quantity</th><th>Unit Price</th><th>Total</th></tr>
+        </thead>
+        <tbody id="itemTableBody"></tbody>
+      </table>
+    </section>
+
+    <section class="totals">
+      <label>Tax (%): <input type="number" id="taxRate" value="10" onchange="updateTotals()"/></label>
+      <label>Discount (%): <input type="number" id="discountRate" value="5" onchange="updateTotals()"/></label>
+      <p><strong>Subtotal:</strong> $<span id="subtotal">0.00</span></p>
+      <p><strong>Tax:</strong> $<span id="tax">0.00</span></p>
+      <p><strong>Discount:</strong> -$<span id="discount">0.00</span></p>
+      <p><strong>Grand Total:</strong> $<span id="grandTotal">0.00</span></p>
+    </section>
+
+    <section class="notes">
+      <h4>Notes:</h4>
+      <p>1. Returns are accepted within 30 days of purchase. </p>
+      <p>2. Bank: Shihsir Bank | A/C: 123-456-789 | Name: Shishir Company</p>
+    </section>
+
+    <button class="download-btn" onclick="downloadPDF()">📥 Download PDF</button>
+    <button class="save-btn" onclick="saveInvoice()">💾 Save Invoice</button>
+  </div>
+
+  <div class="history">
+    <h3>📚 Invoice History</h3>
+    <ul id="invoiceHistory"></ul>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

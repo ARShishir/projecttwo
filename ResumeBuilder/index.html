@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resume Builder</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>📝 Resume Builder</h1>
+    <button onclick="toggleTheme()">🌓 Toggle Theme</button>
+  </header>
+
+  <main>
+    <section class="form-section">
+      <label>Profile Photo:
+        <input type="file" id="profilePhoto" accept="image/*" onchange="previewImage()">
+      </label>
+
+      <input type="text" id="fullName" placeholder="Full Name" oninput="updatePreview()" />
+
+      <label>Job Title:
+        <select id="jobTitle" onchange="updatePreview()">
+          <option value="Software Engineer">Software Engineer</option>
+          <option value="Frontend Developer">Frontend Developer</option>
+          <option value="UI/UX Designer">UI/UX Designer</option>
+          <option value="Data Analyst">Data Analyst</option>
+        </select>
+      </label>
+
+      <input type="email" id="email" placeholder="Email" oninput="updatePreview()" />
+      <input type="tel" id="phone" placeholder="Phone" oninput="updatePreview()" />
+      <input type="url" id="linkedin" placeholder="LinkedIn Profile" oninput="updatePreview()" />
+
+      <textarea id="summary" placeholder="Professional Summary" oninput="updatePreview()"></textarea>
+
+      <input type="text" id="skills" placeholder="Skills (comma-separated)" oninput="updatePreview()" />
+
+      <textarea id="experience" placeholder="Experience" oninput="updatePreview()"></textarea>
+
+      <label>Education Level:
+        <select id="education" onchange="updatePreview()">
+          <option value="B.Sc. in Computer Science">B.Sc. in Computer Science</option>
+          <option value="M.Sc. in IT">M.Sc. in IT</option>
+          <option value="Diploma in Web Development">Diploma in Web Development</option>
+        </select>
+      </label>
+
+      <button onclick="generatePDF()">📄 Download PDF</button>
+    </section>
+
+    <section class="preview" id="resume">
+      <div class="profile">
+        <img id="previewImage" src="" alt="Profile Image" style="display:none" />
+        <h2 id="previewName">Your Name</h2>
+        <p id="previewTitle">Job Title</p>
+        <p id="previewSummary"></p>
+        <p><strong>📧</strong> <span id="previewEmail"></span> | <strong>📞</strong> <span id="previewPhone"></span> | <strong>🔗</strong> <span id="previewLinkedin"></span></p>
+      </div>
+
+      <h4>Skills</h4>
+      <ul id="previewSkills"></ul>
+
+      <h4>Experience</h4>
+      <p id="previewExperience"></p>
+
+      <h4>Education</h4>
+      <p id="previewEducation"></p>
+    </section>
+  </main>
+
+  <script src="html2pdf.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

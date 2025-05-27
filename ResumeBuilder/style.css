@@ -1,0 +1,148 @@
+/* style.css */
+
+:root {
+  --bg: #f5f7fa;
+  --text: #1a1a1a;
+  --card: #ffffff;
+  --accent: #1e90ff;
+}
+
+[data-theme="dark"] {
+  --bg: #121212;
+  --text: #f0f0f0;
+  --card: #1e1e1e;
+  --accent: #1e90ff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+header h1 {
+  font-size: 1.8rem;
+  color: var(--accent);
+}
+
+header button {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+header button:hover {
+  background: #147ad6;
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.form-section,
+.preview {
+  flex: 1 1 400px;
+  background: var(--card);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.form-section input,
+.form-section select,
+.form-section textarea {
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.form-section h3 {
+  margin: 20px 0 10px;
+  font-size: 1rem;
+  color: var(--accent);
+}
+
+.form-section button {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.form-section button:hover {
+  background: #147ad6;
+}
+
+.preview h2 {
+  font-size: 1.8rem;
+  color: var(--accent);
+  margin-top: 10px;
+}
+
+.preview p,
+.preview li {
+  margin: 8px 0;
+  line-height: 1.5;
+}
+
+.preview h4 {
+  margin-top: 16px;
+  font-size: 1.2rem;
+  color: var(--accent);
+}
+
+.preview img {
+  max-width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  border: 2px solid var(--accent);
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  main {
+    flex-direction: column;
+  }
+
+  .preview img {
+    margin: 0 auto 10px;
+    display: block;
+  }
+}

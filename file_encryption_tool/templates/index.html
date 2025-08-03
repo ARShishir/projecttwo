@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+ <!-- Basic SEO -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Data Encryption & Decryption Tool By Abdur Rahaman Shishir</title>
+  <meta name="description" content="Secure Data World: Encrypt and decrypt files safely using access tokens. A simple yet powerful file protection tool for enhanced privacy." />
+  <meta name="keywords" content="file encryption, data security, decrypt tool, secure data world, caesar cipher, python flask project" />
+  <meta name="author" content="Abdur Rahaman Shishir" />
+
+  <!-- Open Graph (For Social Media Sharing) -->
+  <meta property="og:title" content="Welcome to Secure Data World" />
+  <meta property="og:description" content="Protect your files with powerful encryption and easy decryption using Access Tokens." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://github.com/ARShishir" />
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/136100734?v=4" />
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Secure Data World" />
+  <meta name="twitter:description" content="Encrypt and decrypt your files with ease using Access Tokens." />
+  <meta name="twitter:image" content="https://avatars.githubusercontent.com/u/136100734?v=4" />
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://github.com/ARShishir" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="https://avatars.githubusercontent.com/u/136100734?v=4" type="image/x-icon" />
+
+  
+ <style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #4facfe, #8e44ad);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+  }
+  header {
+    text-align: center;
+    padding: 20px 10px;
+    background: rgba(0, 0, 0, 0.2);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 1px;
+  }
+  footer {
+    text-align: center;
+    padding: 15px 10px;
+    background: rgba(0, 0, 0, 0.2);
+    font-size: 1rem;
+    color: #ffffff;
+  }
+  footer a {
+    color: #00c896;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+  footer a:hover {
+    color: #009e77;
+  }
+  .container {
+    background: #ffffff;
+    color: #333;
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.8s ease-in-out;
+  }
+  h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: #6c5ce7;
+    margin-bottom: 20px;
+    font-weight: 700;
+  }
+  label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 8px;
+    color: #2a2a2a;
+  }
+  select, input, textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+  }
+  select:focus, input:focus, textarea:focus {
+    border-color: #6c5ce7;
+    outline: none;
+    box-shadow: 0 0 8px rgba(108, 92, 231, 0.3);
+  }
+  button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, #6c5ce7, #00c896);
+    cursor: pointer;
+    transition: transform 0.3s ease, background 0.3s ease;
+  }
+  button:hover {
+    transform: scale(1.03);
+    background: linear-gradient(135deg, #5a4dcf, #00a67e);
+  }
+  .result-section {
+    margin-top: 25px;
+    padding: 15px;
+    border-radius: 10px;
+    background: #f5f8ff;
+    border: 1px solid #d0d9e8;
+    animation: fadeIn 0.5s ease-in-out;
+    color: #333;
+  }
+  .result-section h3 {
+    margin-bottom: 10px;
+    color: #6c5ce7;
+    font-size: 1.2rem;
+  }
+  pre {
+    background: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 0.9rem;
+    overflow-x: auto;
+  }
+  .download-link {
+    display: inline-block;
+    margin-top: 10px;
+    background: linear-gradient(135deg, #00c896, #009e77);
+    color: #fff;
+    padding: 10px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  .download-link:hover {
+    background: linear-gradient(135deg, #009e77, #007f63);
+    transform: scale(1.05);
+  }
+  .flash-messages {
+    background: #ffe3e3;
+    color: #d63031;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #fab1a0;
+  }
+
+  /* Drag & Drop style */
+  .file-drop-zone {
+    position: relative;
+    padding: 30px;
+    border: 2px dashed #6c5ce7;
+    border-radius: 12px;
+    text-align: center;
+    color: #6c5ce7;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  .file-drop-zone:hover,
+  .file-drop-zone.dragover {
+    background-color: #f0f2ff;
+    border-color: #5a4dcf;
+    color: #5a4dcf;
+  }
+  .file-drop-zone input[type="file"] {
+    position: absolute;
+    opacity: 0;
+    top: 0; left: 0; bottom: 0; right: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+  .file-name {
+    margin-top: 10px;
+    font-weight: 600;
+    color: #6c5ce7;
+    min-height: 20px;
+    user-select: none;
+  }
+
+  @media (max-width: 600px) {
+    header {
+      font-size: 1.4rem;
+      padding: 15px;
+    }
+    footer {
+      font-size: 0.9rem;
+      padding: 10px;
+    }
+    .container {
+      padding: 20px;
+    }
+    h2 {
+      font-size: 1.6rem;
+    }
+  }
+</style>
+
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    Welcome To Secure Data World
+  </header>
+
+  <!-- Main Container -->
+  <div class="container">
+    <h2>Data Encryption & Decryption Tool</h2>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="flash-messages">
+          <ul>
+            {% for msg in messages %}
+              <li>{{ msg }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <form method="post" enctype="multipart/form-data" id="dataForm">
+      <label for="action">Select Mode:</label>
+      <select id="action" name="action" required>
+        <option value="encrypt">Encrypt</option>
+        <option value="decrypt">Decrypt</option>
+      </select>
+
+      <label for="shift">Access Token:</label>
+      <input 
+        type="number" 
+        id="shift" 
+        name="shift" 
+        value="" 
+        placeholder="Guess A Number" 
+        required 
+        min="1"
+      />
+
+      <label for="method">Think about it, what did you say?:</label>
+      <select id="method" name="method" required>
+        <option value="">Enter Access Token first</option>
+      </select>
+
+      <label for="input_text">Input Payload (optional):</label>
+      <textarea 
+        id="input_text" 
+        name="input_text" 
+        placeholder="Enter your data..." 
+        rows="4"
+      ></textarea>
+
+      <label for="file">Upload Resource (optional):</label>
+      <div class="file-drop-zone" id="file-drop-zone">
+        <p>Drag & Drop your file here or <span>Browse</span></p>
+        <input type="file" id="file" name="file" accept=".txt" />
+        <div class="file-name" id="file-name">No file selected</div>
+      </div>
+
+      <button type="submit">Execute</button>
+    </form>
+
+    {% if result %}
+      <div class="result-section">
+        <h3>Processed Output:</h3>
+        <pre>{{ result }}</pre>
+        {% if filename %}
+          <a href="{{ url_for('download_file', filename=filename) }}" class="download-link">Download File</a>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    Developed by 
+    <a href="https://github.com/ARShishir" target="_blank" rel="noopener noreferrer">
+      Abdur Rahaman Shishir
+    </a>
+  </footer>
+
+  <script>
+    // Dynamic dropdown for Access Token
+    document.getElementById("shift").addEventListener("input", function() {
+      const shiftValue = parseInt(this.value);
+      const methodSelect = document.getElementById("method");
+      methodSelect.innerHTML = "";
+
+      if (!isNaN(shiftValue) && shiftValue > 0) {
+        for (let i = 1; i <= shiftValue; i++) {
+          const option = document.createElement("option");
+          option.value = "C" + i; // Confusing value for backend
+          option.textContent = "I Think " + i;
+          methodSelect.appendChild(option);
+        }
+      } else {
+        const option = document.createElement("option");
+        option.value = "";
+        option.textContent = "Enter Access Token first";
+        methodSelect.appendChild(option);
+      }
+    });
+
+    // Drag & Drop file upload UI logic
+    const fileDropZone = document.getElementById('file-drop-zone');
+    const fileInput = document.getElementById('file');
+    const fileNameDisplay = document.getElementById('file-name');
+
+    fileDropZone.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      fileDropZone.classList.add('dragover');
+    });
+
+    fileDropZone.addEventListener('dragleave', (e) => {
+      e.preventDefault();
+      fileDropZone.classList.remove('dragover');
+    });
+
+    fileDropZone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      fileDropZone.classList.remove('dragover');
+
+      if (e.dataTransfer.files.length) {
+        fileInput.files = e.dataTransfer.files;
+        updateFileName();
+      }
+    });
+
+    fileInput.addEventListener('change', updateFileName);
+
+    function updateFileName() {
+      if (fileInput.files.length) {
+        fileNameDisplay.textContent = fileInput.files[0].name;
+      } else {
+        fileNameDisplay.textContent = 'No file selected';
+      }
+    }
+  </script>
+</body>
+</html>
